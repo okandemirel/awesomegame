@@ -1,0 +1,21 @@
+using UnityEngine;
+
+namespace CardMatch.Modules.Audio
+{
+    [System.Serializable]
+    public class SoundData
+    {
+        public SoundType type;
+        public AudioClip clip;
+        [Range(0f, 1f)]
+        public float volume = 1f;
+    }
+
+    public enum SoundType
+    {
+        CardFlip,
+        Match,
+        Mismatch,
+        GameOver
+    }
+}
