@@ -37,12 +37,23 @@ namespace Modules.CardModule.Scripts.View
 
             transform.rotation = Quaternion.identity;
             _isFlipping = false;
+
+            if (canvasGroup != null)
+            {
+                canvasGroup.alpha = 1f;
+            }
+
+            gameObject.SetActive(true);
             SetInteractable(true);
         }
 
         public void Flip(bool showFront, float duration)
         {
-            if (_isFlipping) return;
+            if (_isFlipping)
+            {
+                StopAllCoroutines();
+                _isFlipping = false;
+            }
             StartCoroutine(FlipAnimation(showFront, duration));
         }
 
@@ -51,45 +62,53 @@ namespace Modules.CardModule.Scripts.View
             _isFlipping = true;
             SetInteractable(false);
 
-            float elapsed = 0;
             Quaternion startRotation = transform.rotation;
-            Quaternion midRotation = startRotation * Quaternion.Euler(0, 90, 0);
-            Quaternion endRotation = startRotation * Quaternion.Euler(0, 180, 0);
+            Quaternion targetRotation = showFront ? Quaternion.Euler(0, 180, 0) : Quaternion.identity;
 
-            while (elapsed < duration / 2)
+            float elapsed = 0;
+            bool imagesSwitched = false;
+
+            while (elapsed < duration)
             {
                 elapsed += Time.deltaTime;
-                float t = elapsed / (duration / 2);
-                transform.rotation = Quaternion.Lerp(startRotation, midRotation, t);
+                float t = elapsed / duration;
+                transform.rotation = Quaternion.Lerp(startRotation, targetRotation, t);
+
+                if (!imagesSwitched && t >= 0.5f)
+                {
+                    frontImage.gameObject.SetActive(showFront);
+                    backImage.gameObject.SetActive(!showFront);
+                    imagesSwitched = true;
+                }
+
                 yield return null;
             }
 
-            frontImage.gameObject.SetActive(showFront);
-            backImage.gameObject.SetActive(!showFront);
-
-            elapsed = 0;
-            while (elapsed < duration / 2)
-            {
-                elapsed += Time.deltaTime;
-                float t = elapsed / (duration / 2);
-                transform.rotation = Quaternion.Lerp(midRotation, endRotation, t);
-                yield return null;
-            }
-
-            transform.rotation = showFront ? endRotation : startRotation;
+            transform.rotation = targetRotation;
             _isFlipping = false;
             SetInteractable(true);
         }
 
         public void SetMatched()
         {
-            StartCoroutine(DeactivateAfterEffect());
+            SetInteractable(false);
+            if (canvasGroup != null)
+            {
+                StartCoroutine(FadeOut());
+            }
         }
 
-        private IEnumerator DeactivateAfterEffect()
+        private IEnumerator FadeOut()
         {
-            yield return new WaitForSeconds(0.5f);
-            gameObject.SetActive(false);
+            float duration = 0.5f;
+            float elapsed = 0;
+            while (elapsed < duration)
+            {
+                elapsed += Time.deltaTime;
+                canvasGroup.alpha = 1f - (elapsed / duration);
+                yield return null;
+            }
+            canvasGroup.alpha = 0f;
         }
 
         public void SetInteractable(bool interactable)
