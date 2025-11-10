@@ -1,7 +1,8 @@
 using System.Collections.Generic;
+using Modules.CardModule.Scripts.View;
 using UnityEngine;
 
-namespace CardMatch.Modules.Card
+namespace Modules.CardModule.Scripts
 {
     public class CardPool : MonoBehaviour
     {

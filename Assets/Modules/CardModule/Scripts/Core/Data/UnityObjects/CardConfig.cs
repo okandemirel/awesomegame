@@ -1,8 +1,9 @@
-using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
+using Modules.CardModule.Scripts.Core.Data.ValueObjects;
+using UnityEngine;
 
-namespace CardMatch.Modules.Card
+namespace Modules.CardModule.Scripts.Core.Data.UnityObjects
 {
     [CreateAssetMenu(fileName = "CardConfig", menuName = "CardMatch/Card Configuration")]
     public class CardConfig : ScriptableObject

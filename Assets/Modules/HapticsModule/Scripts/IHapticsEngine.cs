@@ -1,4 +1,4 @@
-namespace CardMatch.Modules.Haptics
+namespace Modules.HapticsModule.Scripts
 {
     public interface IHapticsEngine
     {

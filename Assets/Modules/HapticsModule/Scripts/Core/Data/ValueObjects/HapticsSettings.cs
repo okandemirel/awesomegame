@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace CardMatch.Modules.Haptics
+namespace Modules.HapticsModule.Scripts.Core.Data.ValueObjects
 {
     [System.Serializable]
     public class HapticsSettings

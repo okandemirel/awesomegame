@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace CardMatch.Modules.Audio
+namespace Modules.AudioModule.Scripts.Core.Data.ValueObjects
 {
     [System.Serializable]
     public class SoundData

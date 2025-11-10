@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace CardMatch.Modules.Card
+namespace Modules.CardModule.Scripts.View
 {
     public class CardView : MonoBehaviour, ICardView
     {

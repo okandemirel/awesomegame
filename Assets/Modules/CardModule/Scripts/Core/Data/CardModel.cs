@@ -1,4 +1,4 @@
-namespace CardMatch.Modules.Card
+namespace Modules.CardModule.Scripts.Core.Data
 {
     public class CardModel
     {

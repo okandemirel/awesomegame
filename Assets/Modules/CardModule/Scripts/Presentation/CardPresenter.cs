@@ -1,7 +1,10 @@
-using CardMatch.Modules.Audio;
-using CardMatch.Modules.Haptics;
+using Modules.AudioModule.Scripts;
+using Modules.AudioModule.Scripts.Core.Data.ValueObjects;
+using Modules.CardModule.Scripts.Core.Data;
+using Modules.CardModule.Scripts.View;
+using Modules.HapticsModule.Scripts;
 
-namespace CardMatch.Modules.Card
+namespace Modules.CardModule.Scripts.Presentation
 {
     public class CardPresenter
     {

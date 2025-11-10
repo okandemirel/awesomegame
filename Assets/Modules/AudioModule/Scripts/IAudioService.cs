@@ -1,4 +1,6 @@
-namespace CardMatch.Modules.Audio
+using Modules.AudioModule.Scripts.Core.Data.ValueObjects;
+
+namespace Modules.AudioModule.Scripts
 {
     public interface IAudioService
     {

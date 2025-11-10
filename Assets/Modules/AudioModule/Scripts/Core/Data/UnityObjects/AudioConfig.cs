@@ -1,6 +1,8 @@
+using Modules.AudioModule.Scripts.Core.Data.ValueObjects;
 using UnityEngine;
+using AudioSettings = Modules.AudioModule.Scripts.Core.Data.ValueObjects.AudioSettings;
 
-namespace CardMatch.Modules.Audio
+namespace Modules.AudioModule.Scripts.Core.Data.UnityObjects
 {
     [CreateAssetMenu(fileName = "AudioConfig", menuName = "CardMatch/Audio Configuration")]
     public class AudioConfig : ScriptableObject

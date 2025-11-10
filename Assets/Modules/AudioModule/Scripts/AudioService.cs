@@ -1,7 +1,9 @@
-using UnityEngine;
 using System.Collections.Generic;
+using Modules.AudioModule.Scripts.Core.Data.UnityObjects;
+using Modules.AudioModule.Scripts.Core.Data.ValueObjects;
+using UnityEngine;
 
-namespace CardMatch.Modules.Audio
+namespace Modules.AudioModule.Scripts
 {
     public class AudioService : IAudioService
     {

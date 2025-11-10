@@ -1,6 +1,6 @@
-using UnityEngine;
+using Modules.HapticsModule.Scripts.Core.Data.UnityObjects;
 
-namespace CardMatch.Modules.Haptics
+namespace Modules.HapticsModule.Scripts
 {
     public class HapticsEngine : IHapticsEngine
     {

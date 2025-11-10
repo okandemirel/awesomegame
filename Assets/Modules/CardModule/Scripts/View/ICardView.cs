@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace CardMatch.Modules.Card
+namespace Modules.CardModule.Scripts.View
 {
     public interface ICardView
     {

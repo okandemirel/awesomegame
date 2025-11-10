@@ -1,7 +1,7 @@
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
 
-namespace CardMatch.Modules.Audio
+namespace Modules.AudioModule.Scripts.Core.Data.ValueObjects
 {
     [System.Serializable]
     public class AudioSettings
