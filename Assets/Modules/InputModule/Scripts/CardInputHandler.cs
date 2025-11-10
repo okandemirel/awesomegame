@@ -17,14 +17,20 @@ namespace Modules.InputModule.Scripts
 
         public bool? RegisterCardClick(int cardId)
         {
-            if (_cardsInComparison.Contains(cardId)) return null;
+            if (_cardsInComparison.Contains(cardId))
+            {
+                UnityEngine.Debug.Log($"Card {cardId} is in comparison, ignoring click");
+                return null;
+            }
 
             if (_selectedCards.Contains(cardId))
             {
+                UnityEngine.Debug.Log($"Card {cardId} deselected (flipped back)");
                 _selectedCards.Remove(cardId);
                 return false;
             }
 
+            UnityEngine.Debug.Log($"Card {cardId} selected (flipped front)");
             _selectedCards.Add(cardId);
 
             if (_selectedCards.Count == 2)

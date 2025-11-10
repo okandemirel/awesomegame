@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a949bcd54b8e8534b9cef9eb8b97be17, type: 3}
+  m_Name: CardConfig
+  m_EditorClassIdentifier: 
+  settings:
+    cards:
+    - cardType: 0
+      frontSprite: {fileID: 21300000, guid: a983dde3f9446ff4bab4d35652485941, type: 3}
+      cardColor: {r: 1, g: 0, b: 0, a: 1}
+    - cardType: 1
+      frontSprite: {fileID: 21300000, guid: a0057949ef1be8c459a24739b15c12a2, type: 3}
+      cardColor: {r: 0, g: 0, b: 1, a: 1}
+    - cardType: 2
+      frontSprite: {fileID: 21300000, guid: 2345a3f14e1ddc34d84f69dd1545fed6, type: 3}
+      cardColor: {r: 0, g: 1, b: 0, a: 1}
+    - cardType: 3
+      frontSprite: {fileID: 21300000, guid: 6ea81513fdb038b4c8816434c24011e8, type: 3}
+      cardColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+    - cardType: 4
+      frontSprite: {fileID: 21300000, guid: 98ddb7fac6fb8344b808936005232d7a, type: 3}
+      cardColor: {r: 0, g: 1, b: 1, a: 1}
+    - cardType: 5
+      frontSprite: {fileID: 21300000, guid: 6d4026e6278e6614aa3a79a5aaaa8a72, type: 3}
+      cardColor: {r: 1, g: 0, b: 1, a: 1}
+    - cardType: 6
+      frontSprite: {fileID: 21300000, guid: aa65f4c90c2005548a528785f8107c88, type: 3}
+      cardColor: {r: 1, g: 0.5, b: 0, a: 1}
+    - cardType: 7
+      frontSprite: {fileID: 21300000, guid: e9b6494548bd5324a9cd0c00f0eadcc4, type: 3}
+      cardColor: {r: 0.5, g: 0, b: 1, a: 1}
+    - cardType: 8
+      frontSprite: {fileID: 21300000, guid: 8098db0ece5cd5846868e7dfdcfffb33, type: 3}
+      cardColor: {r: 1, g: 0.4, b: 0.7, a: 1}
+    - cardType: 9
+      frontSprite: {fileID: 21300000, guid: f4c08fc8238e8a04e8973472964f3faa, type: 3}
+      cardColor: {r: 0, g: 0.8, b: 0.8, a: 1}
+    - cardType: 10
+      frontSprite: {fileID: 21300000, guid: c032fd5a087ee3144a99770fe9b19af7, type: 3}
+      cardColor: {r: 0.6, g: 1, b: 0.2, a: 1}
+    - cardType: 11
+      frontSprite: {fileID: 21300000, guid: 524478cf7d0bfa146a9f513a7de2535d, type: 3}
+      cardColor: {r: 0.2, g: 0.2, b: 0.8, a: 1}
+    - cardType: 12
+      frontSprite: {fileID: 21300000, guid: f983f879417bb3046a07db8550bdbab6, type: 3}
+      cardColor: {r: 0.9, g: 0.1, b: 0.3, a: 1}
+    - cardType: 13
+      frontSprite: {fileID: 21300000, guid: d32bea68fc995fd4b978314bd229b925, type: 3}
+      cardColor: {r: 1, g: 0.8, b: 0, a: 1}
+    - cardType: 14
+      frontSprite: {fileID: 21300000, guid: f700811b7cd66474f9b4dade5746c913, type: 3}
+      cardColor: {r: 0.3, g: 0, b: 0.6, a: 1}
+    - cardType: 15
+      frontSprite: {fileID: 21300000, guid: b948059a4a1625e4798e6a9845bb2413, type: 3}
+      cardColor: {r: 1, g: 0.5, b: 0.5, a: 1}
+    defaultBackSprite: {fileID: 21300000, guid: 53aab3eed0979b840b458f2a03b3e15c, type: 3}
