@@ -31,18 +31,5 @@ namespace Modules.GridModule.Scripts.Core.Data.UnityObjects
 
             return settings.cardsToUse.GetRange(0, Mathf.Min(settings.cardsToUse.Count, UniquePairs));
         }
-
-        private void OnValidate()
-        {
-            if (TotalCards % 2 != 0)
-            {
-                Debug.LogWarning($"Grid must have even number of cards! Current: {TotalCards}");
-            }
-
-            if (settings.cardsToUse.Count > UniquePairs)
-            {
-                Debug.LogWarning($"Too many cards selected! Grid needs {UniquePairs} pairs but {settings.cardsToUse.Count} are selected.");
-            }
-        }
     }
 }

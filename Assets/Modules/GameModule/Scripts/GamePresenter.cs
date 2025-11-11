@@ -119,23 +119,16 @@ namespace Modules.GameModule.Scripts
         private void OnCardClick(int cardId)
         {
             var presenter = _cardPresenters[cardId];
-            if (!presenter.CanFlip())
-            {
-                UnityEngine.Debug.Log($"Card {cardId} cannot flip (matched)");
-                return;
-            }
+            if (!presenter.CanFlip()) return;
 
             var result = _inputHandler.RegisterCardClick(cardId);
-            UnityEngine.Debug.Log($"Card {cardId} click result: {result}");
 
             if (result == true)
             {
-                UnityEngine.Debug.Log($"Flipping card {cardId} to FRONT");
                 presenter.Flip(true);
             }
             else if (result == false)
             {
-                UnityEngine.Debug.Log($"Flipping card {cardId} to BACK");
                 presenter.Flip(false);
             }
         }

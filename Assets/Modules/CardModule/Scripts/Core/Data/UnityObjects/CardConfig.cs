@@ -26,21 +26,5 @@ namespace Modules.CardModule.Scripts.Core.Data.UnityObjects
         }
 
         public Sprite GetDefaultBackSprite() => settings.defaultBackSprite;
-
-#if UNITY_EDITOR
-        private void OnValidate()
-        {
-            if (settings.cards == null) return;
-
-            var duplicates = settings.cards.GroupBy(c => c.cardType)
-                .Where(g => g.Count() > 1)
-                .Select(g => g.Key);
-
-            if (duplicates.Any())
-            {
-                Debug.LogWarning($"Duplicate card types found in {name}: {string.Join(", ", duplicates)}");
-            }
-        }
-#endif
     }
 }
