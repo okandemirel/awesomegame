@@ -7,6 +7,7 @@ namespace Modules.CardModule.Scripts.View
 {
     public class CardView : MonoBehaviour, ICardView
     {
+        [SerializeField] private Transform visualContainer;
         [SerializeField] private Image frontImage;
         [SerializeField] private Image backImage;
         [SerializeField] private Button button;
@@ -19,29 +20,22 @@ namespace Modules.CardModule.Scripts.View
 
         private void Awake()
         {
-            if (button != null)
-            {
-                button.onClick.AddListener(HandleClick);
-            }
+            button.onClick.AddListener(HandleClick);
         }
 
         public void Initialize(int id, Sprite frontSprite, Sprite backSprite, Color color)
         {
             _id = id;
-            if (frontImage != null) frontImage.sprite = frontSprite;
-            if (backImage != null) backImage.sprite = backSprite;
-            if (frontImage != null) frontImage.color = color;
+            frontImage.sprite = frontSprite;
+            backImage.sprite = backSprite;
+            frontImage.color = color;
 
             frontImage.gameObject.SetActive(false);
             backImage.gameObject.SetActive(true);
 
-            transform.rotation = Quaternion.identity;
+            visualContainer.localRotation = Quaternion.identity;
+            canvasGroup.alpha = 1f;
             _isFlipping = false;
-
-            if (canvasGroup != null)
-            {
-                canvasGroup.alpha = 1f;
-            }
 
             gameObject.SetActive(true);
             SetInteractable(true);
@@ -60,9 +54,8 @@ namespace Modules.CardModule.Scripts.View
         private IEnumerator FlipAnimation(bool showFront, float duration)
         {
             _isFlipping = true;
-            SetInteractable(false);
 
-            Quaternion startRotation = transform.rotation;
+            Quaternion startRotation = visualContainer.localRotation;
             Quaternion targetRotation = showFront ? Quaternion.Euler(0, 180, 0) : Quaternion.identity;
 
             float elapsed = 0;
@@ -72,7 +65,7 @@ namespace Modules.CardModule.Scripts.View
             {
                 elapsed += Time.deltaTime;
                 float t = elapsed / duration;
-                transform.rotation = Quaternion.Lerp(startRotation, targetRotation, t);
+                visualContainer.localRotation = Quaternion.Lerp(startRotation, targetRotation, t);
 
                 if (!imagesSwitched && t >= 0.5f)
                 {
@@ -84,18 +77,14 @@ namespace Modules.CardModule.Scripts.View
                 yield return null;
             }
 
-            transform.rotation = targetRotation;
+            visualContainer.localRotation = targetRotation;
             _isFlipping = false;
-            SetInteractable(true);
         }
 
         public void SetMatched()
         {
             SetInteractable(false);
-            if (canvasGroup != null)
-            {
-                StartCoroutine(FadeOut());
-            }
+            StartCoroutine(FadeOut());
         }
 
         private IEnumerator FadeOut()
@@ -113,10 +102,7 @@ namespace Modules.CardModule.Scripts.View
 
         public void SetInteractable(bool interactable)
         {
-            if (button != null)
-            {
-                button.interactable = interactable;
-            }
+            button.interactable = interactable;
         }
 
         public void SetPosition(Vector3 position)
@@ -126,11 +112,7 @@ namespace Modules.CardModule.Scripts.View
 
         public void SetSize(Vector2 size)
         {
-            var rectTransform = GetComponent<RectTransform>();
-            if (rectTransform != null)
-            {
-                rectTransform.sizeDelta = size;
-            }
+            ((RectTransform)transform).sizeDelta = size;
         }
 
         public void PlayMatchEffect()
@@ -163,10 +145,7 @@ namespace Modules.CardModule.Scripts.View
 
         private void OnDestroy()
         {
-            if (button != null)
-            {
-                button.onClick.RemoveListener(HandleClick);
-            }
+            button.onClick.RemoveListener(HandleClick);
         }
     }
 }
