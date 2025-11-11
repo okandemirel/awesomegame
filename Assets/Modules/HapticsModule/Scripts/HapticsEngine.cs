@@ -1,4 +1,6 @@
 using Modules.HapticsModule.Scripts.Core.Data.UnityObjects;
+using UnityEngine;
+using SystemInfo = UnityEngine.Device.SystemInfo;
 
 namespace Modules.HapticsModule.Scripts
 {
