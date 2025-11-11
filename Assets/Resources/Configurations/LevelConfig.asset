@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18329005a157a465782c480bdb57cd2d, type: 3}
+  m_Name: LevelConfig
+  m_EditorClassIdentifier: 
+  levels:
+  - levelName: Grid_2x2
+    levelType: 0
+    gridConfig: {fileID: 11400000, guid: 23ca66f705918c94183609cfb4e87168, type: 2}
+    thumbnail: {fileID: 0}
+  - levelName: Grid_4x4
+    levelType: 0
+    gridConfig: {fileID: 11400000, guid: 51a2b5b6f63fde44daca32fd3bf9a020, type: 2}
+    thumbnail: {fileID: 0}
+  - levelName: Grid_5x4
+    levelType: 0
+    gridConfig: {fileID: 11400000, guid: 19bbc7e99dc3c4f25926439325de7d88, type: 2}
+    thumbnail: {fileID: 0}
+  - levelName: Grid_5x6
+    levelType: 0
+    gridConfig: {fileID: 11400000, guid: 421738f4615104ac79b657155a5ec4ae, type: 2}
+    thumbnail: {fileID: 0}
+  - levelName: Grid_6x6
+    levelType: 0
+    gridConfig: {fileID: 11400000, guid: c0dc7abae827ac249a4f926d72200da5, type: 2}
+    thumbnail: {fileID: 0}

@@ -7,6 +7,10 @@ using Modules.GridModule.Scripts.Core.Data.UnityObjects;
 using Modules.HapticsModule.Scripts;
 using Modules.HapticsModule.Scripts.Core.Data.UnityObjects;
 using Modules.InputModule.Scripts;
+using Modules.LevelModule.Scripts;
+using Modules.LevelModule.Scripts.Core.Data;
+using Modules.LevelModule.Scripts.Core.Data.UnityObjects;
+using Modules.LevelModule.Scripts.View;
 using Modules.SaveModule.Scripts;
 using Modules.SaveModule.Scripts.Core.Data.UnityObjects;
 using Modules.ScoringModule.Scripts;
@@ -18,20 +22,59 @@ namespace Modules.GameModule.Scripts
     public class GameBootstrapper : MonoBehaviour
     {
         [Header("Configurations")]
-        [SerializeField] private GridConfigurationData gridConfig;
+        [SerializeField] private LevelConfig levelConfig;
         [SerializeField] private CardConfig cardConfig;
         [SerializeField] private AudioConfig audioConfig;
         [SerializeField] private HapticsConfig hapticsConfig;
         [SerializeField] private ScoringConfig scoringConfig;
         [SerializeField] private SaveConfig saveConfig;
 
-        [Header("View")]
+        [Header("Views")]
+        [SerializeField] private MainMenuView mainMenuView;
+        [SerializeField] private LevelSelectionView levelSelectionView;
         [SerializeField] private GameView gameView;
 
+        private LevelManager _levelManager;
         private GamePresenter _gamePresenter;
 
         private void Awake()
         {
+            _levelManager = new LevelManager();
+
+            mainMenuView.OnPlayClicked += ShowLevelSelection;
+            levelSelectionView.OnLevelSelected += HandleLevelSelected;
+            levelSelectionView.OnBackClicked += ShowMainMenu;
+
+            levelSelectionView.Initialize(levelConfig);
+
+            gameView.gameObject.SetActive(false);
+            levelSelectionView.Hide();
+            mainMenuView.Show();
+        }
+
+        private void ShowMainMenu()
+        {
+            levelSelectionView.Hide();
+            mainMenuView.Show();
+        }
+
+        private void ShowLevelSelection()
+        {
+            mainMenuView.Hide();
+            levelSelectionView.Show();
+        }
+
+        private void HandleLevelSelected(LevelData level)
+        {
+            _levelManager.SelectLevel(level);
+            levelSelectionView.Hide();
+            StartGame(level);
+        }
+
+        private void StartGame(LevelData level)
+        {
+            gameView.gameObject.SetActive(true);
+
             var gridLayoutGenerator = new GridLayoutGenerator();
 
             var audioParent = new GameObject("AudioPool").transform;
@@ -63,7 +106,7 @@ namespace Modules.GameModule.Scripts
                 this
             );
 
-            _gamePresenter.StartGame(gridConfig, cardConfig);
+            _gamePresenter.StartGame(level.gridConfig, cardConfig);
         }
 
         private void OnApplicationPause(bool pause)
@@ -84,6 +127,10 @@ namespace Modules.GameModule.Scripts
 
         private void OnDestroy()
         {
+            mainMenuView.OnPlayClicked -= ShowLevelSelection;
+            levelSelectionView.OnLevelSelected -= HandleLevelSelected;
+            levelSelectionView.OnBackClicked -= ShowMainMenu;
+
             _gamePresenter?.Cleanup();
         }
     }
